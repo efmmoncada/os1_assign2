@@ -14,8 +14,8 @@ int main(int argc, char const *argv[]) {
     scanf("%d", &choice);
 
     if (choice == 1) {
-      printf("selected choice 1\n");
-      return 0;
+      char *dir = select_file();
+      choice = -1;
     } else if (choice == 2) {
       return 0;
     } else {
