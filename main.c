@@ -1,10 +1,19 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "movies.h"
+#include <sys/stat.h>
+#include <time.h>
+#include "movie.h"
+#include "file.h"
 
+// DONE: Creates dirs, and finds unique years.
+// TODO: have to use the unique years arr to iterate of over linked list and genereate/wirte to file with all movies under that year
+// TODO: figure out how to detect smallest and largest value, I suspect ill have to use inodes for metadata, possibly can use stat() to get metadata.
 
 int main(int argc, char const *argv[]) {
+  srand(time(NULL));
+
+
   int choice = -1;
   while (choice) {
     printf("1. Select file to process\n");
@@ -14,7 +23,7 @@ int main(int argc, char const *argv[]) {
     scanf("%d", &choice);
 
     if (choice == 1) {
-      char *dir = select_file();
+      select_file();
       choice = -1;
     } else if (choice == 2) {
       return 0;
