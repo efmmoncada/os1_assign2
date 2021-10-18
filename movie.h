@@ -77,10 +77,12 @@ struct movie *process_file(char *file_path)
 {
   // Open the specified file for reading only
   FILE *movie_file = fopen(file_path, "r");
-  if (movie_file == NULL) {
+  if (movie_file == NULL)
+  {
     printf("The file %s was not found. Try again.\n\n", file_path);
     return NULL;
   }
+  printf("Now processing the chosen file named %s\n", file_path);
 
   char *currLine = NULL;
   size_t len = 0;
@@ -129,22 +131,12 @@ struct movie *process_file(char *file_path)
   return head;
 }
 
-// void print_top_movies(struct movie **movie_arr, int arr_size)
-// {
-//   for (int i = 0; i < arr_size; i++)
-//   {
-//     printf("%d %.1f %s\n", movie_arr[i]->year, movie_arr[i]->rating, movie_arr[i]->title);
-//   }
-// }
 
-/* Design: create an array of movies. For all movies, check if array contains a movie with the same year as the curr movie.
-* if it does, check ratings, and replace if higher. if you get to the end of the array and no movie in the array matches the
-* curr movies year, append that movie to the array. Will likey need to keep track of the arrays size in order to use an inner for loop
-* within the outer while loop to iterate over the linked list of movies
-* finally, print the array at the end */
-int *find_years(struct movie *node, int* arr_size)
+
+/* Creates an array of unique years in which a movie was released from the linked list of movies it recives.
+   Returns the created array, and the size of that array. */
+int *find_years(struct movie *node, int *arr_size)
 {
-
 
   int *year_arr = calloc(1, sizeof(int));
   *arr_size = 1;
@@ -173,7 +165,6 @@ int *find_years(struct movie *node, int* arr_size)
     flag = 0;
   }
 
-  //print_top_movies(top_movies, arr_size);
   return year_arr;
 }
 
